@@ -1,0 +1,77 @@
+/**
+ * @file
+ * Media Queries
+ */
+
+// Maximum Width
+@mixin maxWidth($maxSize, $mediaType: screen) {
+  @if type-of($maxSize)==string {
+    $maxSize: breakpoint($maxSize) - 1;
+  }
+  @media #{$mediaType} and (max-width: $maxSize) {
+    @content;
+  }
+}
+
+// Minimum Width
+@mixin minWidth($minSize, $mediaType: screen) {
+  @if type-of($minSize)==string {
+    $minSize: breakpoint($minSize);
+  }
+  @media #{$mediaType} and (min-width: $minSize) {
+    @content;
+  }
+}
+
+// Minimum To Maximum Width
+@mixin minMax($minSize, $maxSize, $mediaType: screen) {
+  @if type-of($minSize)==string {
+    $minSize: breakpoint($minSize);
+  }
+  @if type-of($maxSize)==string {
+    $maxSize: breakpoint($maxSize) - 1;
+  }
+  @media #{$mediaType} and (min-width: $minSize) and (max-width: $maxSize) {
+    @content;
+  }
+}
+
+// Mobile Max
+@mixin mobile($mediaType: screen) {
+  @include maxWidth(breakpoint($desktopBreakPoint) - 1, $mediaType: $mediaType) {
+    @content;
+  }
+}
+
+// Desktop Min
+@mixin desktop($mediaType: screen) {
+  @include minWidth(breakpoint($desktopBreakPoint), $mediaType: $mediaType) {
+    @content;
+  }
+}
+
+/*
+ * Media Queries for Standard Devices
+ * https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+ */
+
+// Non-Retina Screen
+@mixin laptop {
+  @media screen
+    and (min-device-width: 1200px)
+    and (max-device-width: 1600px)
+    and (-webkit-min-device-pixel-ratio: 1) {
+      @content;
+  }
+}
+
+// Non-Retina Screen
+@mixin laptopRetina {
+  @media screen
+    and (min-device-width: 1200px)
+    and (max-device-width: 1600px)
+    and (-webkit-min-device-pixel-ratio: 2)
+    and (min-resolution: 192dpi) {
+      @content;
+  }
+}

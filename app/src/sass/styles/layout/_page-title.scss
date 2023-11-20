@@ -1,0 +1,44 @@
+/**
+ * @file
+ * Page Title
+ */
+
+.layout-page-title--image {
+  position: relative;
+  .swiper--title {
+    height: 40vw;
+    max-height: 550px;
+    @include laptop {
+      height: 30vw;
+    }
+    img {
+      object-fit: cover;
+    }
+  }
+  .layout-page-title__wrapper,
+  .swiper--title img,
+  .layout-page-title__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  // Content Wrapper
+  .layout-page-title__wrapper {
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  // Overlay
+  .layout-page-title__overlay {
+    z-index: 100;
+  }
+  .contextual-region {
+    position: static;
+    .contextual {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+/**
+ * @file
+ * Colors
+ */
+
+$colorMap: map-merge($colorBase, $colorTheme);
+
+@each $name, $color in $colorMap {
+
+  /* Background */
+  #{'.color-background-' + $name} {
+    background-color: $color!important;
+  }
+
+  // /* Text */
+  #{'.color-text-' + $name} {
+    color: $color!important;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: inherit!important;
+    }
+
+  }
+
+}

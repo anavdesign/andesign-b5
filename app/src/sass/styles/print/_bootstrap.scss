@@ -1,0 +1,21 @@
+/**
+ * @file
+ * Bootstrap
+ */
+
+@media print {
+
+  // Disable containers
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl,
+  .container-fluid {
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+}

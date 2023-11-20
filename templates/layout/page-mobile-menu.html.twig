@@ -1,0 +1,33 @@
+<div id="layout-mobile-menu-section" class="layout-mobile-menu-section d-print-none{{ mobile_menu_section is not empty ? ' ' ~ mobile_menu_section|lower|trim }}">
+
+  <div class="layout-mobile-menu-container{{ mobile_menu_container is not empty ? ' ' ~ mobile_menu_container|lower|trim }}">
+
+    {% if page.mobile_menu_header %}
+      <div id="layout-mobile-menu-header" class="layout-mobile-menu-header layout-mobile-menu-item{{ mobile_menu_header is not empty ? ' ' ~ mobile_menu_header|lower|trim }}">
+        {{ page.mobile_menu_header }}
+      </div>
+    {% endif %}
+
+    {% if page.mobile_menu_content %}
+      <div id="layout-mobile-menu-content" class="layout-mobile-menu-content layout-mobile-menu-item{{ mobile_menu_content is not empty ? ' ' ~ mobile_menu_content|lower|trim }}">
+        {{ page.mobile_menu_content }}
+      </div>
+    {% endif %}
+
+    {% if page.mobile_menu_footer %}
+      <div id="layout-mobile-menu-footer" class="layout-mobile-menu-footer layout-mobile-menu-item{{ mobile_menu_footer is not empty ? ' ' ~ mobile_menu_footer|lower|trim }}">
+        {{ page.mobile_menu_footer }}
+      </div>
+    {% endif %}
+
+    <div id="mobile-menu-close" class="mobile-menu-btn mobile-menu-btn--close mobile-menu-toggle">
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <use xlink:href="#icon-close"></use>
+      </svg>
+    </div>
+
+  </div>
+
+  <div id="layout-mobile-menu-overlay" class="layout-mobile-menu-overlay mobile-menu-toggle"></div>
+
+</div>

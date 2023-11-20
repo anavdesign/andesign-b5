@@ -1,0 +1,17 @@
+/**
+ * @file
+ * Typography
+ */
+
+$fontFamilyBase       : 'Open Sans', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+$fontFamilyHeader     : Oswald, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+$fontFamilyNavigation : $fontFamilyBase;
+$fontFamilyButtons    : $fontFamilyBase;
+
+// Heading Sizes
+$heading1             : 3vw, 30px, 38px, 38px;
+$heading2             : 3vw, 22px, 28px, 28px;
+$heading3             : 3vw, 20px, 26px, 26px;
+$heading4             : 3vw, 19px, 24px, 24px;
+$heading5             : 2vw, 17px, 20px, 20px;
+$heading6             : 2vw, 16px, 18px, 18px;

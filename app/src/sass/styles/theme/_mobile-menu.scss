@@ -1,0 +1,25 @@
+/**
+ * @file
+ * Mobile Menu
+ */
+
+// Close Button
+.mobile-menu-btn--close {}
+
+// Overlay
+.layout-mobile-menu-overlay {
+  background: $white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  .js-mobile-menu-active & {
+    opacity: 0.8;
+  }
+}
+
+// Background Color
+.layout-mobile-menu-container {
+  background: $white;
+}
+
+// Content
+.layout-mobile-menu-content .region {}

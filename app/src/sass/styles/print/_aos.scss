@@ -1,0 +1,11 @@
+/**
+ * @file
+ * AOS
+ */
+
+@media print {
+  [data-aos^=fade][data-aos^=fade] {
+    opacity: 1!important;
+    transform: none!important;
+  }
+}

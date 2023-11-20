@@ -1,0 +1,10 @@
+/**
+ * @file
+ * Header
+ */
+
+.layout-header-center {
+  @include mobile {
+    display: none!important;
+  }
+}

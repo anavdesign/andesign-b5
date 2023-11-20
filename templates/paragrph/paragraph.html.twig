@@ -1,0 +1,153 @@
+{% set para_id =  'paragraph-id-' ~ paragraph.id() %}
+{% set para_type = paragraph.bundle|clean_class %}
+
+{# Paragraoh Type #}
+{% set para_section = false %}
+{% if para_type == 'section' %}
+  {% set para_section = true %}
+{% endif %}
+{% set para_slide = false %}
+{% if para_type == 'slide' %}
+  {% set para_slide = true %}
+{% endif %}
+
+{# Paragraph Background Image #}
+{% set para_bgnd_image = (render_var(content.field_para_background_image.0)) %}
+{% set para_image_parallax = (render_var(content.field_para_image_parallax.0)) %}
+
+{# Paragraph Image #}
+{% set para_image = (render_var(content.field_para_image.0)) %}
+
+{# Paragraph Content #}
+{% set para_content = false %}
+{% set para_title = content.field_para_title.0 %}
+{% set para_body = content.field_para_body.0 %}
+{% set para_buttons = content.field_para_button.0 %}
+{% if para_title is not empty or para_body is not empty or para_buttons is not empty %}
+  {% set para_content = true %}
+{% endif %}
+
+{# Paragraph Image Classes #}
+{% set para_image_classes_attr = create_attribute() %}
+{%
+  set para_image_classes = [
+    'paragraph__image',
+    'paragraph__image--' ~ para_type,
+    (render_var(content.field_para_image_classes.0))|lower,
+  ]
+%}
+
+{# Paragraph Container Classes #}
+{% set para_container_classes_attr = create_attribute() %}
+{%
+  set para_container_classes = [
+    'paragraph__container',
+    'paragraph__container--' ~ para_type,
+    (render_var(content.field_para_container_classes.0))|lower,
+  ]
+%}
+
+{# Paragraph Content Classes #}
+{% set para_content_classes_attr = create_attribute() %}
+{%
+  set para_content_classes = [
+    'paragraph__content',
+    'paragraph__content--' ~ para_type,
+    (render_var(content.field_para_content_classes.0))|lower,
+  ]
+%}
+
+{# Paragraph Classes #}
+{%
+  set classes = [
+    'paragraph',
+    para_section ? 'paragraph--level-0' : 'paragraph--level-1',
+    'paragraph--' ~ para_type,
+    'paragraph--type--' ~ para_type,
+    para_bgnd_image ? 'paragraph--has-bgnd',
+    para_image_parallax == '1' ? 'paragraph--parallax',
+    (render_var(content.field_para_classes.0))|lower,
+    para_content ? 'paragraph--has-content',
+    (render_var(content.field_para_image_position.0)),
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    'page-break-inside',
+  ]
+%}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+
+      {# Section & Slide Background Image #}
+      {% if para_bgnd_image %}
+        <div class="paragraph__bgnd-image">
+          {{ para_bgnd_image }}
+          <div class="paragraph__overlay"></div>
+        </div>
+      {% endif %}
+
+      <div class="paragraph__wrapper">
+        <div {{ para_container_classes_attr.addClass(para_container_classes) }}>
+
+          {% if para_image %}
+            <div {{ para_image_classes_attr.addClass(para_image_classes) }}>{{ para_image }}</div>
+          {% endif %}
+
+          {% if para_content %}
+            <div {{ para_content_classes_attr.addClass(para_content_classes) }}>
+
+              {% if para_title %}
+                <h2 class="paragraph__title">{{ para_title }}</h2>
+              {% endif %}
+
+              {% if para_body %}
+                <div class="paragraph__body">{{ para_body }}</div>
+              {% endif %}
+
+              {% if para_buttons %}
+                <div class="paragraph__buttons">{{ para_buttons }}</div>
+              {% endif %}
+            </div> {# /.paragraph__content #}
+          {% endif %}
+
+          {{ render_var(content.field_para_block.0) }}
+          {{ render_var(content.field_para_views.0) }}
+          {{ render_var(content.field_para_video.0) }}
+          {{ content.field_para_slideshow }}
+
+          {{ content|without(
+            'field_para_title',
+            'field_para_body',
+            'field_para_button',
+            'field_para_image',
+            'field_para_image_position',
+            'field_para_image_classes',
+            'field_para_background_image',
+            'field_para_image_parallax',
+            'field_para_block',
+            'field_para_views',
+            'field_para_video',
+            'field_para_slide',
+            'field_para_slideshow',
+            'field_para_classes',
+            'field_para_container_classes',
+            'field_para_content_classes',
+          ) }}
+
+        </div> {# /.paragraph__container #}
+      </div> {# /.paragraph__wrapper #}
+
+    {% endblock %}
+  </div>
+{% endblock paragraph %}
+
+{{ attach_library('andesign_b5/paragraph') }}
+
+{% if para_image_parallax == '1' %}
+  {{ attach_library('andesign_b5/parallax') }}
+{% endif %}
+
+{% if para_slide %}
+  {{ attach_library('andesign_b5/swiper') }}
+{% endif %}

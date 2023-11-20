@@ -1,0 +1,36 @@
+{
+  "name": "andesign_b5",
+  "version": "1.0.0",
+  "description": "andesign Bootstrap 5 Theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "andesign <andesign@mac.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "aos": "^2.3.4",
+    "bootstrap": "^5.3.2",
+    "browser-sync": "^2.29.3",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-changed": "^4.0.3",
+    "gulp-cheerio": "^1.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-include": "^2.4.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svgmin": "^4.1.0",
+    "gulp-svgstore": "^9.0.0",
+    "gulp-uglify": "^3.0.2",
+    "jump.js": "^1.0.2",
+    "sass": "^1.69.5",
+    "simple-parallax-js": "^5.6.2",
+    "swiper": "^11.0.4"
+  }
+}

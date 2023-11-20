@@ -1,0 +1,29 @@
+{% if page.footer_top or page.footer_main or page.footer_bottom %}
+  <footer role="contentinfo" class="layout-footer{{ footer_section is not empty ? ' ' ~ footer_section|lower|trim }}">
+
+    {% if page.footer_top %}
+      <div id="layout-footer-top" class="layout-footer__item layout-footer-top{{ footer_top_section is not empty ? ' ' ~ footer_top_section|lower|trim }}">
+        <div class="layout-footer-container{{ footer_top_container is not empty ? ' ' ~ footer_top_container|lower|trim }}">
+          {{ page.footer_top }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if page.footer_main %}
+      <div id="layout-footer-main" class="layout-footer__item layout-footer-main{{ footer_main_section is not empty ? ' ' ~ footer_main_section|lower|trim }}">
+        <div class="layout-footer-container{{ footer_main_container is not empty ? ' ' ~ footer_main_container|lower|trim }}">
+          {{ page.footer_main }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if page.footer_bottom %}
+      <div id="layout-footer-bottom" class="layout-footer__item layout-footer-bottom{{ footer_bottom_section is not empty ? ' ' ~ footer_bottom_section|lower|trim }}">
+        <div class="layout-footer-container{{ footer_bottom_container is not empty ? ' ' ~ footer_bottom_container|lower|trim }}">
+          {{ page.footer_bottom }}
+        </div>
+      </div>
+    {% endif %}
+
+  </footer>
+{% endif %}

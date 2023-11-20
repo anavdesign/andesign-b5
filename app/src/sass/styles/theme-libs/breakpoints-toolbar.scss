@@ -1,0 +1,130 @@
+/**
+ * @file
+ * Breakpoints
+ */
+
+// Include Variables
+@import '../../settings/variables/**/*';
+
+// Include Fucntions
+@import '../../settings/functions/**/*';
+
+// Include Mixins
+@import '../../settings/mixins/**/*';
+
+$viewportSizeHeight : 30px;
+
+body {
+  padding-bottom: $viewportSizeHeight!important;
+}
+
+.theme-breakpoints-toolbar {
+  position: fixed;
+  z-index: 100000;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  padding: 0 15px;
+  font-weight: bold;
+  font-size: 12px;
+  background-color: $red;
+  color:$white;
+  > div {
+    display: flex;
+    align-items: center;
+    height: $viewportSizeHeight;
+    + div {
+      margin-left: 8px;
+    }
+  }
+}
+
+.theme-breakpoints-toolbar__breakpoint i::before {
+  content: "None";
+}
+
+.theme-breakpoints-toolbar__device i::before {
+  content: "";
+}
+
+// Breakpoints
+.theme-breakpoints-toolbar {
+  @include minMax(xxs, xs) {
+    background-color: $orange;
+    color:$white;
+    .theme-breakpoints-toolbar__breakpoint i::before {
+      content: 'XXS (320px)';
+    }
+    .theme-breakpoints-toolbar__device i::before {
+      content: 'Mobile';
+    }
+  }
+
+  @include minMax(xs, sm) {
+    background-color: $yellow;
+    color: $black;
+    .theme-breakpoints-toolbar__breakpoint i::before {
+      content: 'XS (480px)';
+    }
+    .theme-breakpoints-toolbar__device i::before {
+      content: 'Large Mobile';
+    }
+  }
+
+  @include minMax(sm, md) {
+    background-color: $green;
+    color:$white;
+    .theme-breakpoints-toolbar__breakpoint i::before {
+      content: 'SM (576px)';
+    }
+    .theme-breakpoints-toolbar__device i::before {
+      content: 'Small Tablet';
+    }
+  }
+
+  @include minMax(md, lg) {
+    background-color: $cyan;
+    color: $black;
+    .theme-breakpoints-toolbar__breakpoint i::before {
+      content: 'MD (768px)';
+    }
+    .theme-breakpoints-toolbar__device i::before {
+      content: 'Tablet';
+    }
+  }
+
+  @include minMax(lg, xl) {
+    background-color: $blue;
+    color:$white;
+    .theme-breakpoints-toolbar__breakpoint i::before {
+      content: 'LG (992px)';
+    }
+    .theme-breakpoints-toolbar__device i::before {
+      content: 'Large Tablet';
+    }
+  }
+
+  @include minWidth(xl) {
+    background-color: $magenta;
+    color:$white;
+    .theme-breakpoints-toolbar__breakpoint i::before {
+      content: 'XL (1200px)';
+    }
+    .theme-breakpoints-toolbar__device i::before {
+      content: 'Desktop';
+    }
+  }
+
+  @include minWidth(xxl) {
+    background-color: $crimson;
+    color:$white;
+    .theme-breakpoints-toolbar__breakpoint i::before {
+      content: 'XXL (1400px)';
+    }
+    .theme-breakpoints-toolbar__device i::before {
+      content: 'Desktop';
+    }
+  }
+
+}

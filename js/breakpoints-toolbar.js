@@ -1,0 +1,1 @@
+const widthOutput=document.querySelector(".theme-breakpoints-toolbar__width i"),heightOutput=document.querySelector(".theme-breakpoints-toolbar__height i");function updateSize(){heightOutput.textContent=window.innerHeight,widthOutput.textContent=window.innerWidth}updateSize(),window.addEventListener("resize",updateSize);

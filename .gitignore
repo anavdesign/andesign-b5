@@ -1,0 +1,8 @@
+#Drupal 10 Bootstrap Starter Theme
+
+# NPM Dependencies
+node_modules
+bower_components
+
+# Finder file
+.DS_Store

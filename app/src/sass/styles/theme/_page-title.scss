@@ -1,0 +1,19 @@
+/**
+ * @file
+ * Page Title
+ */
+
+.layout-page-title--image {
+  background: $black;
+  .swiper--title img {}
+  // Content
+  .layout-page-title__content {
+    text-align: center;
+    color: $white;
+  }
+  // Overlay
+  .layout-page-title__overlay {
+    background: $black;
+    opacity: 0.4;
+  }
+}

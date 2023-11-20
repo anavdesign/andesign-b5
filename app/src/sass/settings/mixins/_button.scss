@@ -1,0 +1,13 @@
+/**
+ * @file
+ * Button
+ */
+
+@mixin button( $color: white, $bgnd: primary) {
+  box-shadow: none;
+  text-shadow: none;
+  color: $color;
+  border-color: darken($bgnd, 5% );
+  background-color: $bgnd;
+  background-image: none;
+}

@@ -1,0 +1,30 @@
+/**
+ * @file
+ * Content
+ */
+
+// Content Wrapper
+.layout-content-wrapper {
+  @media screen {
+    min-height: 40vh;
+  }
+}
+
+// No Sidebar
+.layout-no-sidebar .layout-content {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;;
+}
+
+// Landing Page
+// Disable layout container
+.layout-landing-page .layout-main .layout-content-container {
+  max-width: none;
+  padding-right: 0;
+  padding-left: 0;
+  .layout-content-row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

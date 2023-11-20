@@ -1,0 +1,51 @@
+/**
+ * @file
+ * Slideshow
+ */
+
+//  Test class to change height 100VH
+// .slideshow-h100 .swiper.swiper--paragraph {
+//   height: calc(100vh - 90px);
+//   max-height: none;
+// }
+
+.swiper--paragraph {
+  height: 50vw;
+  max-height: 800px;
+  @include laptop {
+    height: 40vw;
+  }
+  .paragraph__wrapper,
+  .paragraph__bgnd-image img,
+  .paragraph__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    background: $black;
+  }
+  // Image
+  .paragraph__bgnd-image img {
+    object-fit: cover;
+  }
+  // Content Wrapper
+  .paragraph__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+  }
+  // Content
+  .paragraph__content {
+    color: $white;
+  }
+  // Overlay
+  .paragraph__overlay {
+    background: $black;
+    opacity: 0.4;
+  }
+}

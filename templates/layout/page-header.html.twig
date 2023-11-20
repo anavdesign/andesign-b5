@@ -1,0 +1,44 @@
+<header id="layout-header" class="layout-header">
+
+  {% if page.header_top %}
+    <div id="layout-header-top" class="layout-header-top{{ header_top_section is not empty ? ' ' ~ header_top_section|lower|trim }}">
+      <div class="layout-header-container{{ header_top_container is not empty ? ' ' ~ header_top_container|lower|trim }}">
+        {{ page.header_top }}
+      </div>
+    </div>
+  {% endif %}
+
+  <div id="layout-header-main" class="layout-header-main d-print-none{{ header_main_section is not empty ? ' ' ~ header_main_section|lower|trim }}" role="banner">
+    <div class="layout-header-container{{ header_main_container is not empty ? ' ' ~ header_main_container|lower|trim }}">
+      <div class="layout-header-row{{ header_main_row is not empty ? ' ' ~ header_main_row|lower|trim }}">
+        <div class="layout-header-left{{ header_main_left is not empty ? ' ' ~ header_main_left|lower|trim }}">
+          {{ page.header_brand }}
+        </div>
+        <div class="layout-header-center{{ header_main_center is not empty ? ' ' ~ header_main_center|lower|trim }}">
+          {{ page.header_content }}
+        </div>
+        <div class="layout-header-right{{ header_main_right is not empty ? ' ' ~ header_main_right|lower|trim }}">
+          <div id="mobile-menu-open" class="mobile-menu-btn mobile-menu-btn--open mobile-menu-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <use xlink:href="#icon-nav"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-header-print d-none d-print-block">
+    <div class="row">
+      <div class="col-auto">
+        <img src="{{ base_path ~ directory }}/logo-print.png" alt="{{ site_name }}" width="175" />
+      </div>
+      {% if page.header_print %}
+        <div class="col">
+          {{ page.header_print }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</header>

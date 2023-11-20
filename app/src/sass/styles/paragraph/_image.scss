@@ -1,0 +1,96 @@
+/**
+ * @file
+ * Paragraph Image
+ */
+
+.paragraph--image {
+  position: relative;
+  .paragraph__content {
+    margin-top: $spacer;
+    margin-bottom: $spacer;
+  }
+}
+.paragraph--image.paragraph--has-content .paragraph__container {
+  display: flex;
+  flex-direction: column;
+  @at-root .paragraph--img-btm#{&} {
+    flex-direction: column-reverse;
+  }
+}
+.paragraph--img-top,
+.paragraph--img-btm {
+  .paragraph__image {
+    position: relative;
+    overflow: hidden;
+    height: 50vw;
+    max-height: 700px;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .paragraph--img-right,
+  .paragraph--img-left {
+    &.paragraph--has-content .paragraph__container {
+      min-height: 50vh;
+    }
+  }
+}
+
+@media screen and (min-width: $lg), print {
+  .paragraph--img-right,
+  .paragraph--img-left {
+    &.paragraph--has-content .paragraph__container {
+      flex-direction: row;
+      .paragraph__image {
+        overflow: hidden;
+        width: 50%;
+        img {
+          position: absolute;
+          width: 50%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .paragraph__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        margin-top: $spacer * 2;
+        margin-bottom: $spacer * 2;
+      }
+    }
+  }
+
+  // Image Right
+  .paragraph--img-right {
+    &.paragraph--has-content .paragraph__container {
+      flex-direction: row-reverse;
+    }
+    .paragraph__image img {
+      right: 0;
+    }
+    .paragraph__content {
+      padding-right: $spacer * 2;
+    }
+  }
+
+  // Image Left
+  .paragraph--img-left {
+    .paragraph__image img {
+      left: 0;
+    }
+    .paragraph__content {
+      padding-left: $spacer * 2;
+    }
+  }
+
+}

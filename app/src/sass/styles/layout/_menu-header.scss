@@ -1,0 +1,22 @@
+/**
+ * @file
+ * Menu Header
+ */
+
+.layout-header .menu {
+  margin: 0;
+}
+
+// Global Navigation
+.layout-header-center .menu-level-0 {
+  display: flex;
+  justify-content: flex-end;
+  .menu-item-level-0 {
+    margin: 0;
+    padding: 0;
+  }
+  .menu-link-level-0 {
+    display: block;
+    padding: 0 $spacer;
+  }
+}

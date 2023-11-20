@@ -1,0 +1,26 @@
+<div class="layout-container">
+  {% include '@andesign_b5/layout/page-header.html.twig' %}
+
+  <div class="layout-content-wrapper">
+    <div id="layout-messages" class="layout-messages">
+      <div class="container-lg">
+        {{ page.page_messages }}
+      </div>
+    </div>
+    {% include '@andesign_b5/layout/page-hero.html.twig' %}
+    {% include '@andesign_b5/layout/page-title.html.twig' %}
+    {% if page.page_system|render %}
+      <div id="layout-system" class="layout-system">
+        <div class="container-lg">
+          {{ page.page_system }}
+        </div>
+      </div>
+    {% endif %}
+    {% include '@andesign_b5/layout/page-content.html.twig' %}
+  </div>
+
+  {% include '@andesign_b5/layout/page-footer.html.twig' %}
+</div>
+
+{% include '@andesign_b5/layout/page-mobile-menu.html.twig' %}
+{{ page.hidden }}

@@ -1,0 +1,38 @@
+{% set title_image = node.getType is not empty ? drupal_field('field_title_image', 'node', node.id) : null %}
+{% set title_subtitle = node.getType is not empty ? drupal_field('field_subtitle', 'node', node.id) : null %}
+{% if title_image.0 %}
+  {% set title_image_count = title_image['#items']|length %}
+{% endif %}
+{% set page_title_attr = create_attribute() %}
+{%
+  set page_title_classes = [
+    'layout-page-title',
+    page_title_section ? page_title_section|lower|trim,
+    title_image.0 ? 'layout-page-title--image',
+  ]
+%}
+{% if page.page_title %}
+  <section {{ page_title_attr.setAttribute('id', 'layout-page-title').addClass(page_title_classes) }}>
+    <div class="layout-page-title__wrapper">
+      <div class="layout-page-title__container{{ page_title_container is not empty ? ' ' ~ page_title_container|lower|trim }}">
+        <div class="layout-page-title__content">
+          {{ page.page_title }}
+          {% if title_subtitle.0%}
+            <p class="layout-page-title__subtitle">{{ title_subtitle.0 }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {# Title Image #}
+    {% if title_image.0 %}
+      <div class="layout-page-title__image">
+        {{ title_image }}
+        <div class="layout-page-title__overlay"></div>
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+{# Swiper #}
+{% if title_image_count > 1 %}
+  {{ attach_library('andesign_b5/swiper') }}
+{% endif %}

@@ -1,0 +1,196 @@
+/**
+ * @file
+ * Menu Mobile
+ */
+
+// Menu Width
+$menuWidthMobile: 450px;
+$menuWidthSmall: 300px;
+
+// Menu Buttons
+.mobile-menu-btn svg {
+  width: 30px;
+  height: 30px;
+}
+.mobile-menu-btn--close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+// Hide Mobile Menu & Header Open Icon
+.layout-header-right,
+.layout-mobile-menu-section {
+  @include desktop {
+    display: none!important;
+  }
+}
+
+@include mobile {
+
+  html.js-mobile-menu-active {
+    overflow: hidden;
+    body {
+      overflow: hidden;
+    }
+  }
+
+  .layout-mobile-menu .layout-mobile-menu-container {
+    position: fixed;
+    z-index: 7000;
+    overflow: scroll;
+    top: 0;
+    height: 100%;
+  }
+
+  /*
+   * Right and Left Menu
+   */
+  .layout-mobile-menu--right,
+  .layout-mobile-menu--left {
+    .layout-mobile-menu-container,
+    .layout-container {
+      transition: transform 0.5s ease;
+    }
+    .layout-mobile-menu-container{
+      width: $menuWidthMobile;
+    }
+  }
+
+  /*
+   * Right
+   */
+  .layout-mobile-menu--right .layout-mobile-menu-container {
+    right: -$menuWidthMobile;
+  }
+
+  // Active Right Menu
+  .js-mobile-menu-active .layout-mobile-menu--right {
+    .layout-mobile-menu-container {
+      transform: translateX(-$menuWidthMobile);
+    }
+    .layout-container {
+      transform: translateX(-$menuWidthMobile);
+    }
+  }
+  .js-mobile-menu-active .toolbar-vertical.layout-mobile-menu--right .layout-container {
+    transform: translateX(0);
+  }
+
+  /*
+   * Left
+   */
+  .layout-mobile-menu--left .layout-mobile-menu-container {
+    left: -$menuWidthMobile;
+  }
+
+  // Active Left Menu
+  .js-mobile-menu-active .layout-mobile-menu--left {
+    .layout-mobile-menu-container {
+      transform: translateX($menuWidthMobile);
+    }
+    .layout-container {
+      transform: translateX($menuWidthMobile);
+    }
+  }
+  .js-mobile-menu-active .toolbar-vertical.layout-mobile-menu--left .layout-container {
+    transform: translateX(0);
+  }
+
+  /*
+   * Full
+   */
+  .layout-mobile-menu--full .layout-mobile-menu-container {
+    width: 100%;
+    left: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  // Active Full Menu
+  .js-mobile-menu-active .layout-mobile-menu--full .layout-mobile-menu-container {
+    left: 0;
+    opacity: 1;
+  }
+
+}
+
+@include maxWidth(sm) {
+
+  /*
+   * Right and Left Menu
+   */
+  .layout-mobile-menu--right,
+  .layout-mobile-menu--left {
+    .layout-mobile-menu-container{
+      width: $menuWidthSmall;
+    }
+  }
+
+  /*
+   * Right
+   */
+  .layout-mobile-menu--right .layout-mobile-menu-container {
+    right: -$menuWidthSmall;
+  }
+
+  // Active Right Menu
+  .js-mobile-menu-active .layout-mobile-menu--right {
+    .layout-mobile-menu-container {
+      transform: translateX(-$menuWidthSmall);
+    }
+    .layout-container {
+      transform: translateX(-$menuWidthSmall);
+    }
+  }
+
+  /*
+   * Left
+   */
+  .layout-mobile-menu--left .layout-mobile-menu-container {
+    left: -$menuWidthSmall;
+  }
+
+  // Active Left Menu
+  .js-mobile-menu-active .layout-mobile-menu--left {
+    .layout-mobile-menu-container {
+      transform: translateX($menuWidthSmall);
+    }
+    .layout-container {
+      transform: translateX($menuWidthSmall);
+    }
+  }
+
+}
+
+// Overlay
+@include mobile {
+
+  // Left & Right Mobile Menu Position
+  .js-mobile-menu-active {
+    .layout-mobile-menu--right,
+    .layout-mobile-menu--left {
+      .layout-mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+}
+
+// Content
+.layout-mobile-menu-item {
+  padding: 0 $spacer;
+  &.layout-mobile-menu-header {
+    padding-top: $spacer * 2;
+  }
+  &.layout-mobile-menu-content {
+    margin: $spacer * 1.5 0;
+  }
+  &.layout-mobile-menu-footer {
+    padding-bottom: $spacer * 3;
+  }
+}

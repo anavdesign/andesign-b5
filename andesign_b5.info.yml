@@ -1,0 +1,49 @@
+name: 'andesign B5'
+description: 'andesign Bootstrap 5 Theme'
+type: theme
+version: VERSION
+core_version_requirement: ^10
+'base theme': stable9
+generator: 'starterkit_theme:10.1.5'
+starterkit: true
+
+libraries:
+  - core/normalize
+  - andesign_b5/global-styles
+  - andesign_b5/base
+  - andesign_b5/messages
+  - andesign_b5/global-scripts
+  - andesign_b5/fonts
+
+libraries-extend:
+  user/drupal.user:
+    - andesign_b5/user
+  core/drupal.dropbutton:
+    - andesign_b5/dropbutton
+  core/drupal.dialog:
+    - andesign_b5/dialog
+  file/drupal.file:
+    - andesign_b5/file
+  core/drupal.progress:
+    - andesign_b5/progress
+
+regions:
+  header_top            : 'Header Top'
+  header_brand          : 'Headr Brand'
+  header_content        : 'Header Content'
+  header_print          : 'Header Print'
+  page_messages         : 'Messages'
+  page_hero             : 'Hero'
+  page_title            : 'Page Title'
+  page_system           : 'System'
+  content_top           : 'Content Top'
+  content               : 'Content'
+  sidebar               : 'Sidebar'
+  content_bottom        : 'Content Bottom'
+  footer_top            : 'Footer Top'
+  footer_main           : 'Footer Main'
+  footer_bottom         : 'Footer Bottom'
+  mobile_menu_header    : 'Mobile Menu Header'
+  mobile_menu_content   : 'Mobile Menu Content'
+  mobile_menu_footer    : 'Mobile Menu Footer'
+  hidden                : 'Hidden'

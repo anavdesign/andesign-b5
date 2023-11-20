@@ -1,0 +1,19 @@
+/**
+ * @file
+ * Sticky Header
+ */
+
+@media screen {
+  .js-sticky-header .layout-header {
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    opacity: 0;
+    z-index:300;
+    transition: top 0.5s ease, opacity 0.75s ease;
+  }
+  .js-sticky-header-active .layout-header {
+    opacity: 1;
+  }
+}

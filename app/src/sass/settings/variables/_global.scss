@@ -1,0 +1,12 @@
+/**
+ * @file
+ * Global Vaiables
+ */
+
+// Colors
+$globalBodyBg          : $white;
+$globalBodyColor       : $black;
+$globalBorderColor     : $gray;
+$globalLinkColor       : $primary;
+$globalLinkColorHover  : darken($primary, 15%);
+$globalLinkColorActive : $globalLinkColorHover;

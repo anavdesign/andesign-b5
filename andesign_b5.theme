@@ -1,0 +1,173 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+/**
+ * Implements hook_preprocess_image_widget().
+ */
+function andesign_b5_preprocess_image_widget(array &$variables) {
+  $data = &$variables['data'];
+
+  // This prevents image widget templates from rendering preview container HTML
+  // to users that do not have permission to access these previews.
+  // @todo revisit in https://drupal.org/node/953034
+  // @todo revisit in https://drupal.org/node/3114318
+  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
+    unset($data['preview']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function andesign_b5_preprocess_html(&$variables) {
+
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+
+  // Node
+  $node = \Drupal::request()->get('node');
+
+  // Add Node Id Class To Body
+  if($node) {
+    $variables['attributes']['class'][] = 'node-' . $node->id();
+  }
+
+  // Add Vocabulary Name and Term ID variables
+  if (\Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
+    // load the term entity and get the data from there
+    $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+    $variables['term_id'] = $term->id();
+    $variables['vocabulary_id'] = $term->bundle();
+  }
+
+  // Mobile Menu Position
+  $variables['mobile_menu_position'] = theme_get_setting('mobile_menu_position');
+
+  // Sticky Header
+  $variables['sticky_header'] = theme_get_setting('sticky_header');
+
+   // Theme Breakpoints Toolbar
+  $variables['breakpoints_toolbar'] = theme_get_setting('breakpoints_toolbar');
+
+  // Removing the phone number as a link on iOS
+  $noPhoneDetection = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'format-detection',
+      'content' => 'telephone=no',
+    ],
+  ];
+
+  $variables['page']['#attached']['html_head'][] = [$noPhoneDetection, 'format-detection'];
+
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function andesign_b5_preprocess_page(array &$variables) {
+
+  // Layout Section
+  $variables['header_top_section'] = theme_get_setting('header_top_section');
+  $variables['header_main_section'] = theme_get_setting('header_main_section');
+  $variables['hero_section'] = theme_get_setting('hero_section');
+  $variables['page_title_section'] = theme_get_setting('page_title_section');
+  $variables['content_top_section'] = theme_get_setting('content_top_section');
+  $variables['content_main_section'] = theme_get_setting('content_main_section');
+  $variables['content_bottom_section'] = theme_get_setting('content_bottom_section');
+  $variables['footer_section'] = theme_get_setting('footer_section');
+  $variables['footer_top_section'] = theme_get_setting('footer_top_section');
+  $variables['footer_main_section'] = theme_get_setting('footer_main_section');
+  $variables['footer_bottom_section'] = theme_get_setting('footer_bottom_section');
+  $variables['mobile_menu_section'] = theme_get_setting('mobile_menu_section');
+
+  // Layout Containers
+  $variables['header_top_container'] = theme_get_setting('header_top_container');
+  $variables['header_main_container'] = theme_get_setting('header_main_container');
+  $variables['hero_container'] = theme_get_setting('hero_container');
+  $variables['page_title_container'] = theme_get_setting('page_title_container');
+  $variables['content_top_container'] = theme_get_setting('content_top_container');
+  $variables['content_main_container'] = theme_get_setting('content_main_container');
+  $variables['content_bottom_container'] = theme_get_setting('content_bottom_container');
+  $variables['footer_top_container'] = theme_get_setting('footer_top_container');
+  $variables['footer_main_container'] = theme_get_setting('footer_main_container');
+  $variables['footer_bottom_container'] = theme_get_setting('footer_bottom_container');
+  $variables['mobile_menu_container'] = theme_get_setting('mobile_menu_container');
+
+  // Layout Row
+  $variables['header_main_row'] = theme_get_setting('header_main_row');
+  $variables['content_main_row'] = theme_get_setting('content_main_row');
+
+  // Layout Columns
+  $variables['header_main_left'] = theme_get_setting('header_main_left');
+  $variables['header_main_center'] = theme_get_setting('header_main_center');
+  $variables['header_main_right'] = theme_get_setting('header_main_right');
+  $variables['content_sidebar_main'] = theme_get_setting('content_sidebar_main');
+  $variables['content_sidebar_col'] = theme_get_setting('content_sidebar_col');
+
+  // Layout Mobile Menu
+  $variables['mobile_menu_header'] = theme_get_setting('mobile_menu_header');
+  $variables['mobile_menu_content'] = theme_get_setting('mobile_menu_content');
+  $variables['mobile_menu_footer'] = theme_get_setting('mobile_menu_footer');
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for region.html.twig.
+ */
+function andesign_b5_preprocess_region(&$variables) {
+
+  // Header Top Region Classes
+  $header_top_row = theme_get_setting('header_top_row');
+  if (isset($variables['region']) && $variables['region'] == 'header_top' && !empty($header_top_row)) {
+    $variables['attributes']['class'][] = $header_top_row . ' layout-header-row';
+  }
+
+  // Hero Region Classes
+  $hero_row = theme_get_setting('hero_row');
+  if (isset($variables['region']) && $variables['region'] == 'page_hero' && !empty($hero_row)) {
+    $variables['attributes']['class'][] = $hero_row . ' layout-hero-row';
+  }
+
+  // Page Title Region Classes
+  $page_title_row = theme_get_setting('page_title_row');
+  if (isset($variables['region']) && $variables['region'] == 'page_title' && !empty($page_title_row)) {
+    $variables['attributes']['class'][] = $page_title_row . ' layout-title-row';
+  }
+
+  // Content Top Region Classes
+  $content_top_row = theme_get_setting('content_top_row');
+  if (isset($variables['region']) && $variables['region'] == 'content_top' && !empty($content_top_row)) {
+    $variables['attributes']['class'][] = $content_top_row . ' layout-content-row';
+  }
+
+  // Content Bottom Region Classes
+  $content_bottom_row = theme_get_setting('content_bottom_row');
+  if (isset($variables['region']) && $variables['region'] == 'content_bottom' && !empty($content_bottom_row)) {
+    $variables['attributes']['class'][] = $content_bottom_row . ' layout-content-row';
+  }
+
+  // Footer Top Region Classes
+  $footer_top_row = theme_get_setting('footer_top_row');
+  if (isset($variables['region']) && $variables['region'] == 'footer_top' && !empty($footer_top_row)) {
+    $variables['attributes']['class'][] = $footer_top_row . ' layout-footer-row';
+  }
+
+  // Footer Main Region Classes
+  $footer_main_row = theme_get_setting('footer_main_row');
+  if (isset($variables['region']) && $variables['region'] == 'footer_main' && !empty($footer_main_row)) {
+    $variables['attributes']['class'][] = $footer_main_row . ' layout-footer-row';
+  }
+
+  // Footer Bottom Region Classes
+  $footer_bottom_row = theme_get_setting('footer_bottom_row');
+  if (isset($variables['region']) && $variables['region'] == 'footer_bottom' && !empty($footer_bottom_row)) {
+    $variables['attributes']['class'][] = $footer_bottom_row . ' layout-footer-row';
+  }
+
+}

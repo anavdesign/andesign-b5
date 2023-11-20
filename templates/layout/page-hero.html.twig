@@ -1,0 +1,7 @@
+{% if page.page_hero %}
+  <section id="layout-hero" class="layout-hero{{ hero_section is not empty ? ' ' ~ hero_section|lower|trim }}">
+    <div class="layout-hero-container{{ hero_container is not empty ? ' ' ~ hero_container|lower|trim }}">
+      {{ page.page_hero }}
+    </div>
+  </section>
+{% endif %}

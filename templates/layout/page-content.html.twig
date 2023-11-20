@@ -1,0 +1,37 @@
+{% if node.getType == 'landing_page' %}
+  {% set has_sidebar = false %}
+{% else %}
+  {% set has_sidebar = page.sidebar|render|trim|striptags|length > 1 %}
+{% endif %}
+
+{% if page.content_top %}
+  <div id="layout-content-top" class="layout-content-top{{ content_top_section is not empty ? ' ' ~ content_top_section|lower|trim }}">
+    <div class="layout-content-container{{ content_top_container is not empty ? ' ' ~ content_top_container|lower|trim }}">
+      {{ page.content_top }}
+    </div>
+  </div>
+{% endif %}
+
+<main id="layout-main" class="layout-main{{ content_main_section is not empty ? ' ' ~ content_main_section|lower|trim }}" role="main">
+  <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+  <div class="layout-content-container{{ content_main_container is not empty ? ' ' ~ content_main_container|lower|trim }}">
+    <div class="layout-content-row{{ content_main_row is not empty ? ' ' ~ content_main_row|lower|trim }}">
+      <div id="layout-content" class="layout-content{{ content_sidebar_main is not empty ? ' ' ~ content_sidebar_main|lower|trim }}">
+        {{ page.content }}
+      </div>{# /.layout-content #}
+      {% if has_sidebar %}
+        <aside id="layout-sidebar" class="layout-sidebar{{ content_sidebar_col is not empty ? ' ' ~ content_sidebar_col|lower|trim }}" role="complementary">
+          {{ page.sidebar }}
+        </aside>
+      {% endif %}
+    </div>{# /.layout-main-row #}
+  </div>
+</main>
+
+{% if page.content_bottom %}
+  <div id="layout-content-bottom" class="layout-content-bottom{{ content_top_section is not empty ? ' ' ~ content_bottom_section|lower|trim }}">
+    <div class="layout-content-container{{ content_bottom_container is not empty ? ' ' ~ content_bottom_container|lower|trim }}">
+      {{ page.content_bottom }}
+    </div>
+  </div>
+{% endif %}

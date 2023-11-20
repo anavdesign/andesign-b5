@@ -1,0 +1,76 @@
+features:
+  comment_user_picture: false
+  comment_user_verification: false
+  favicon: false
+  logo: true
+  name: true
+  slogan: true
+  node_user_picture: false
+
+# Layout Section
+# ---------------
+header_top_section: ''
+header_main_section: ''
+hero_section: ''
+page_title_section: ''
+content_top_section: ''
+content_main_section: ''
+content_bottom_section: ''
+footer_section: ''
+footer_top_section: ''
+footer_main_section: ''
+footer_bottom_section: ''
+mobile_menu_section: ''
+
+# Layout Container
+# ---------------
+header_top_container: 'container-lg'
+header_main_container: 'container-lg'
+hero_container: ''
+page_title_container: 'container-lg'
+content_top_container: 'container-lg'
+content_main_container: 'container-lg'
+content_bottom_container: 'container-lg'
+footer_top_container: 'container-lg'
+footer_main_container: 'container-lg'
+footer_bottom_container: 'container-lg'
+mobile_menu_container: ''
+
+# Layout Row
+# ---------------
+header_top_row: 'row'
+header_main_row: 'row justify-content-between align-items-center'
+hero_row: ''
+page_title_row: 'row'
+content_top_row: 'row'
+content_main_row: 'row'
+content_bottom_row: 'row'
+footer_top_row: 'row'
+footer_main_row: 'row'
+footer_bottom_row: 'row'
+
+# Layout Col
+# ---------------
+header_main_left: 'col-auto'
+header_main_center: 'col'
+header_main_right: 'col-auto'
+content_sidebar_main: 'col-12 col-lg-9'
+content_sidebar_col: 'col-12 col-lg-3'
+
+# Layout Mobile Menu
+# ---------------
+mobile_menu_header: ''
+mobile_menu_content: ''
+mobile_menu_footer: ''
+
+# Sticky Header
+# ---------------
+sticky_header: 1
+
+# Mobile Menu
+# ---------------
+mobile_menu_position: 'left'
+
+# Breakpoints Toolbar
+# ---------------
+breakpoints_toolbar: 1

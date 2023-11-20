@@ -1,0 +1,25 @@
+/**
+ * @file
+ * Paragraph
+ */
+
+.field__item + .field__item > .paragraph {
+  // margin-top: $spacer * 6;
+}
+
+// Fix white space on right side using AOS
+.paragraph {
+  overflow: hidden;
+}
+
+.paragraph--level-0 {}
+
+.paragraph--level-1 {}
+
+// Disable Contextual menu
+.paragraph .contextual-region {
+  position: static;
+  .contextual {
+    display: none;
+  }
+}

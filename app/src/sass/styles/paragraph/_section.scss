@@ -1,0 +1,65 @@
+/**
+ * @file
+ * Paragraph Section
+ */
+
+// Background Image
+.paragraph--section.paragraph--has-bgnd {
+
+  // Print
+  @media print {
+    .simpleParallax {
+      overflow: auto!important;
+      height: auto;
+      img {
+        transform: none!important;
+        width: 100%!important;
+        height: auto!important;
+      }
+    }
+  }
+
+  // Layout
+  @include minWidth(sm) {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: $black;
+    .layout__region {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 50vw;
+      max-height: 800px;
+      .paragraph {
+        width: 100%;
+        margin-top: $spacer * 2;
+        margin-bottom: $spacer * 2;
+      }
+    }
+    .paragraph__bgnd-image img,
+    .paragraph__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .paragraph__bgnd-image img {
+      object-fit: cover;
+    }
+    .paragraph__overlay {
+      background: $black;
+      opacity: 0.4;
+    }
+  }
+  // Laptops
+  @include laptop {
+    .layout__region {
+      height: 40vw;
+    }
+  }
+}
